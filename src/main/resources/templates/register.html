@@ -1,15 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Register</title>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Home</title>
+
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/site.css" />
+
 </head>
 <body>
+	<div th:insert="fragments/header :: head"></div>
+
 	<div class="container">
-		<h1>Register</h1>
+		<div class="page-header">
+			<h1>Register Page</h1>
+		</div>
+
+		<form th:action="@{/process_register}" method="post"
+			th:object="${user}">
+			<div class="m-3 lg-6">
+				<div class="form-group row">
+					<label class="col-form-label col-4">Email</label>
+					<div class="col-8">
+						<input type="email" class="form-control" th:field="*{email}"
+							required />
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-4">Password</label>
+					<div class="col-8">
+						<input type="password" class="form-control" th:field="*{password}"
+							required />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-form-label col-4">First Name</label>
+					<div class="col-8">
+						<input type="text" class="form-control" th:field="*{firstName}"
+							required />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-form-label col-4">Last Name</label>
+					<div class="col-8">
+						<input type="text" class="form-control" th:field="*{lastName}"
+							required />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<button type="submit" class="btn btn-primary">Login</button>
+				</div>
+			</div>
+		</form>
 	</div>
-	<a href="/register"> Register </a>
+
+	<div th:insert="fragments/footer :: foot"></div>
+
 </body>
 </html>
